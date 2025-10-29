@@ -1,132 +1,173 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-  <meta name="description" content="Profil futuristik Rahma — dengan tampilan interaktif dan efek modern.">
-<meta name="theme-color" content="#ff6fb5">
-<link rel="icon" type="image/png" href="rahma.jpeg">
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Profil Rachelle</title>
+  <title>Profil Rachelle — Rasel</title>
+  <meta name="description" content="Kartu profil personal — pastel, estetik, responsif untuk HP & laptop. Klik tombol untuk lihat Identitas, Kesukaan, Kontak, Skill." />
+
+  <!-- Pilih font yang halus -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:#0f1020;
-      --glass: rgba(255,255,255,0.06);
-      --accent:#ff6fb5; /* soft pink accent */
-      --accent2:#7af0ff; /* cyan highlight */
-      --muted:rgba(255,255,255,0.65);
-      --card-radius:18px;
-      --glass-2:rgba(255,255,255,0.03);
-      --shadow: 0 10px 30px rgba(2,6,23,0.7);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      --bg-1: #f6f4ff; /* very light lilac */
+      --bg-2: #fff;     /* white */
+      --card-bg: rgba(255,255,255,0.7);
+      --glass: rgba(255,255,255,0.55);
+      --accent: #b99bff; /* pastel purple */
+      --accent-2: #ffd9f7; /* pastel pink */
+      --muted: #6b6b7a;
+      --soft-shadow: 0 8px 30px rgba(90,70,120,0.08);
+      --card-radius: 18px;
+      --glass-border: rgba(120,100,160,0.12);
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color-scheme: light;
     }
 
-    /* Page layout */
-    html,body{height:100%;margin:0;background:radial-gradient(800px 400px at 10% 10%, rgba(122,240,255,0.06), transparent),
-      linear-gradient(180deg,#071021 0%, var(--bg) 60%);color:white}
-    .wrap{
-      min-height:100vh;display:grid;place-items:center;padding:36px;
-    }
+    /* --- Reset / base --- */
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%); color:#1f1430}
+    img{max-width:100%;height:auto;display:block}
+    a{color:inherit}
 
-    /* Card */
+    /* animated moving background: soft flowing gradient */
+    .bg-animated{
+      position:fixed;inset:0;z-index:-2;pointer-events:none;
+      background: radial-gradient(circle at 10% 20%, rgba(185,155,255,0.25), transparent 10%),
+                  radial-gradient(circle at 80% 80%, rgba(255,217,247,0.22), transparent 10%);
+      filter:blur(30px) saturate(120%);
+      animation: floatBG 18s linear infinite;
+      opacity:0.95;
+    }
+    @keyframes floatBG{0%{transform:translateY(0) translateX(0)}50%{transform:translateY(-20px) translateX(15px)}100%{transform:translateY(0) translateX(0)}}
+
+    /* subtle moving stripes on top */
+    .bg-lines{position:fixed;inset:0;z-index:-1;opacity:0.06;pointer-events:none;background-image:linear-gradient(90deg, rgba(200,180,255,0.08) 0.5px, transparent 0.5px);background-size:40px 40px;animation: pan 12s linear infinite}
+    @keyframes pan{from{background-position:0 0}to{background-position:40px 0}}
+
+    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px}
+
+    /* card */
     .profile-card{
-      width:min(980px,94%);
-      border-radius:22px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-      box-shadow:var(--shadow);
-      display:grid;grid-template-columns: 380px 1fr;gap:28px;padding:28px;align-items:center;backdrop-filter: blur(8px) saturate(120%);
-      border: 1px solid rgba(255,255,255,0.04);
+      width:min(980px,96%);
+      background:var(--card-bg);
+      border-radius:calc(var(--card-radius) + 6px);
+      box-shadow:var(--soft-shadow);
+      display:grid;grid-template-columns:320px 1fr;gap:22px;padding:22px;align-items:start;backdrop-filter: blur(6px) saturate(110%);
+      border:1px solid var(--glass-border);
+      overflow:hidden;
     }
 
-    /* Left column: photo + quick stats */
-    .left{
-      display:flex;flex-direction:column;gap:18px;align-items:center;text-align:center;padding:14px;
-    }
+    /* left column */
+    .left{display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center;padding:6px}
     .avatar{
-      width:280px;height:280px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);box-shadow:0 6px 24px rgba(0,0,0,0.6);
-      position:relative;
+      width:260px;height:260px;border-radius:16px;overflow:hidden;border:6px solid rgba(255,255,255,0.6);background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.45));box-shadow:0 12px 40px rgba(95,70,130,0.08);position:relative;
     }
-    .avatar img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1);transition:transform .8s cubic-bezier(.2,.9,.3,1)}
-    .avatar:hover img{transform:scale(1.04) rotate(-0.5deg)}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.9,.3,1)}
+    .avatar:hover img{transform:scale(1.03) rotate(-0.4deg)}
 
-    .glow-ring{
-      position:absolute;inset:auto -8px -8px auto;right:-22px;bottom:-22px;width:110px;height:110px;border-radius:50%;filter:blur(22px);z-index:0;background:radial-gradient(circle at 30% 30%, var(--accent), transparent 35%), radial-gradient(circle at 70% 70%, var(--accent2), transparent 40%);
-      opacity:0.75;transform:translateZ(0);
-    }
+    .glow-ring{position:absolute;right:-18px;bottom:-18px;width:90px;height:90px;border-radius:50%;filter:blur(18px);background:radial-gradient(circle at 20% 20%, var(--accent), transparent 40%), radial-gradient(circle at 70% 70%, var(--accent-2), transparent 40%);opacity:0.9}
 
-    .name{font-size:1.36rem;font-weight:700;letter-spacing:0.4px}
-    .role{font-size:0.95rem;color:var(--muted);margin-top:4px}
+    .name{font-size:1.4rem;font-weight:700;color:#2b1938}
+    .role{font-size:0.95rem;color:var(--muted);margin-top:2px}
 
-    .quick-stats{display:flex;gap:10px;margin-top:8px}
-    .stat{background:var(--glass);padding:8px 12px;border-radius:12px;font-size:0.9rem;color:var(--muted);border:1px solid rgba(255,255,255,0.03)}
+    .quick-stats{display:flex;flex-direction:row;gap:8px;flex-wrap:wrap;justify-content:center}
+    .stat{background:rgba(255,255,255,0.9);padding:8px 12px;border-radius:12px;font-size:0.88rem;color:#3b2b4b;border:1px solid rgba(120,100,160,0.06)}
 
-    /* Right column: interactive panel */
-    .right{padding-right:10px}
-    .controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+    .hint{font-size:0.86rem;color:var(--muted);max-width:260px}
+
+    /* right column */
+    .right{padding-right:6px}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
     .control-btn{
-      --pad:10px 14px;cursor:pointer;border-radius:12px;padding:var(--pad);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.045);font-weight:600;letter-spacing:0.2px;transition:all .18s;display:inline-flex;gap:10px;align-items:center
+      --pad:8px 12px;cursor:pointer;border-radius:12px;padding:var(--pad);background:transparent;border:1px solid rgba(90,70,120,0.08);font-weight:600;letter-spacing:0.2px;transition:all .18s;display:inline-flex;gap:10px;align-items:center;color:#2b1938;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.95));
     }
-    .control-btn:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,0.45)}
-    .control-btn.active{background:linear-gradient(90deg,var(--accent)33%,var(--accent2)100%);color:#081019;border:1px solid rgba(255,255,255,0.06);}
+    .control-btn:hover{transform:translateY(-4px);box-shadow:0 8px 22px rgba(90,70,120,0.06)}
+    .control-btn.active{background:linear-gradient(90deg,var(--accent)33%,var(--accent-2)100%);color:#3b2145;border:1px solid rgba(90,70,120,0.08)}
 
-    /* Content area */
-    .panel{
-      min-height:220px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:18px;border:1px solid rgba(255,255,255,0.03);position:relative;overflow:hidden
-    }
+    .panel{min-height:220px;background:transparent;padding:18px;border-radius:12px;position:relative;overflow:hidden}
+    .panel-card{background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.95));padding:16px;border-radius:12px;border:1px solid rgba(120,100,160,0.06);box-shadow:0 6px 20px rgba(90,70,120,0.04)}
 
-    .panel .title{font-weight:700;margin-bottom:8px}
+    .panel .title{font-weight:700;margin-bottom:8px;color:#2b1938}
     .panel p{color:var(--muted);line-height:1.5}
 
-    /* Animated particles */
-    .particle{position:absolute;border-radius:50%;opacity:0.12;filter:blur(6px);}
-    .p1{width:220px;height:220px;right:-60px;top:-60px;background:radial-gradient(circle at 30% 30%,var(--accent),transparent 35%)}
-    .p2{width:140px;height:140px;left:-40px;bottom:-40px;background:radial-gradient(circle at 60% 60%,var(--accent2),transparent 35%);opacity:0.08}
+    /* particles (small floating circles) */
+    .particle{position:absolute;border-radius:50%;opacity:0.18;filter:blur(6px);pointer-events:none}
+    .p1{width:160px;height:160px;right:-40px;top:-40px;background:radial-gradient(circle at 30% 30%,var(--accent),transparent 40%)}
+    .p2{width:120px;height:120px;left:-30px;bottom:-30px;background:radial-gradient(circle at 70% 60%,var(--accent-2),transparent 40%);opacity:0.12}
 
-    /* details list */
+    /* info list */
     .info-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
-    .info-item{background:var(--glass-2);padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);font-size:0.92rem;color:var(--muted)}
+    .info-item{background:transparent;padding:10px;border-radius:10px;border:1px dashed rgba(120,100,160,0.06);font-size:0.95rem;color:var(--muted)}
 
-    /* Aesthetic footer */
-    .footer-note{margin-top:18px;font-size:0.86rem;color:rgba(255,255,255,0.55)}
+    .footer-note{margin-top:12px;font-size:0.86rem;color:rgba(43,25,56,0.7)}
 
-    /* Responsive */
+    /* small eyebrow */
+    .badge{display:inline-flex;padding:6px 10px;border-radius:999px;font-weight:600;background:linear-gradient(90deg, rgba(185,155,255,0.12), rgba(255,217,247,0.12));border:1px solid rgba(120,100,160,0.06);color:#3b2145}
+
+    /* animations for panel content */
+    .panel-content{opacity:0;transform:translateY(8px);transition:all .36s cubic-bezier(.2,.9,.3,1);display:none}
+    .panel-content.show{display:block;opacity:1;transform:translateY(0)}
+
+    /* WhatsApp button style */
+    .wa-btn{display:inline-flex;gap:8px;align-items:center;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;font-weight:700;text-decoration:none;border:0}
+
+    /* responsive adjustments */
     @media (max-width:900px){
-      .profile-card{grid-template-columns:1fr;align-items:start}
-      .avatar{width:220px;height:220px}
+      .profile-card{grid-template-columns:1fr;align-items:center;padding:18px}
+      .avatar{width:200px;height:200px}
+      .info-list{grid-template-columns:repeat(1,1fr)}
+      .right{width:100%}
     }
 
-    /* Small flourish: typing micro animation for 'klik tombol' */
-    .hint{font-size:0.9rem;color:rgba(255,255,255,0.6);display:flex;gap:8px;align-items:center}
-    .cursor{display:inline-block;width:10px;height:16px;background:linear-gradient(90deg,#fff, #ddd);margin-left:6px;border-radius:2px;opacity:0.85;animation:blink 1s steps(2,end) infinite}
-    @keyframes blink{50%{opacity:0}} 
+    @media (max-width:520px){
+      .wrap{padding:14px}
+      .avatar{width:150px;height:150px}
+      .controls{flex-direction:column}
+      .control-btn{width:100%;justify-content:center}
+      .name{font-size:1.05rem}
+      .panel-card{padding:12px}
+    }
+
+    /* focus styles for accessibility */
+    .control-btn:focus{outline:3px solid rgba(185,155,255,0.22);outline-offset:4px}
+    .wa-btn:focus{outline:3px solid rgba(255,217,247,0.22);outline-offset:3px}
 
   </style>
 </head>
 <body>
+
+  <div class="bg-animated" aria-hidden></div>
+  <div class="bg-lines" aria-hidden></div>
+
   <div class="wrap">
-    <section class="profile-card" aria-label="Kartu profil futuristik">
+    <section class="profile-card" aria-label="Kartu profil Rasel" role="region">
+
       <div class="left">
-        <div class="avatar" id="avatar">
-          <!-- Ganti src dengan foto-mu -->
-          <img id="avatar-img" src="rahma.jpeg" alt="Foto Rahma" />
-          <div class="glow-ring"></div>
+        <div class="avatar" id="avatar" title="Klik dua kali untuk ganti nama atau seret foto untuk ganti foto">
+          <!-- Ganti src dengan foto-mu (rahma.jpeg ada di folder) -->
+          <img id="avatar-img" src="rahma.jpg" alt="Foto Rasel" />
+          <div class="glow-ring" aria-hidden></div>
         </div>
+
         <div>
           <div class="name" id="fullName">Rachelle Morozova</div>
-          <div class="role" id="tagline">Ethereal, bitch and avant garde</div>
+          <div class="role" id="tagline">soulful • kreatif • penuh rasa</div>
         </div>
 
         <div class="quick-stats" aria-hidden>
-          <div class="stat">✨ creative as always</div>
-          <div class="stat">🌐 explorer</div>
-          <div class="stat">🎵 Music with idgaf attitude</div>
+          <div class="stat">🎨 desain & estetika</div>
+          <div class="stat">☕ kopi sore</div>
+          <div class="stat">🎧 synth / lo-fi vibes</div>
         </div>
-        <div class="hint">the capillaries in my eyes are bursting, if our love died, would that be the worst thing? for somebody i thought was my saviour. you sure make me do a whole lot of labour<span class="cursor"></span></div>
+
+        <div class="hint">Selamat datang — klik tombol di kanan untuk lihat detail. Tekan 1–5 di keyboard untuk ganti panel.</div>
       </div>
 
       <div class="right">
         <div class="controls" role="tablist" aria-label="Kontrol profil">
-          <button class="control-btn active" data-panel="about">Tentang</button>
+          <button class="control-btn active" data-panel="about" aria-selected="true">Tentang</button>
           <button class="control-btn" data-panel="identitas">Identitas</button>
           <button class="control-btn" data-panel="kesukaan">Kesukaan</button>
           <button class="control-btn" data-panel="kontak">Kontak</button>
@@ -134,96 +175,117 @@
         </div>
 
         <div class="panel" id="panel-root">
-          <!-- Particle decorations -->
           <div class="particle p1" aria-hidden></div>
           <div class="particle p2" aria-hidden></div>
 
-          <!-- Panels (hidden/shown via JS) -->
-          <div class="panel-content" data-name="about">
-            <div class="title">Halo! Aku <span id="headline">Rasel</span></div>
-            <p id="about-text">Selamat datang! Aku suka membuat hal-hal yang estetik dan fungsional. Di sini ada beberapa informasi singkat tentang aku. btw klik tombol "Identitas" atau "Kesukaan" untuk detail lebih lengkap.</p>
-            <div class="footer-note">ДОБРО ПОЖАЛОВАТЬ!!!!!!</div>
-          </div>
+          <div class="panel-card">
 
-          <div class="panel-content" data-name="identitas" style="display:none">
-            <div class="title">Identitas</div>
-            <div class="info-list">
-              <div class="info-item"><strong>Nama:</strong> <span id="ident-nama">Rachelle</span></div>
-              <div class="info-item"><strong>Usia:</strong> <span id="ident-usia">16 asf</span></div>
-              <div class="info-item"><strong>Kota:</strong> <span id="ident-kota">Moscow</span></div>
-              <div class="info-item"><strong>Pekerjaan:</strong> <span id="ident-job">Pelajar</span></div>
+            <div class="panel-content" data-name="about">
+              <div class="title">Halo! Aku <span id="headline">Rasel</span></div>
+              <p id="about-text">Aku senang merangkai hal-hal indah: dari desain antarmuka yang tenang sampai playlist malam hari. Halaman ini adalah kartu profil yang lembut, responsif, dan bisa diedit langsung. Yuk jadi lebih akrab!</p>
+              <div class="footer-note">Tip: tekan tombol <strong>Kontak</strong> untuk menghubungiku lewat WhatsApp.</div>
             </div>
-          </div>
 
-          <div class="panel-content" data-name="kesukaan" style="display:none">
-            <div class="title">Kesukaan</div>
-            <p id="likes">Musik synthwave, desain antarmuka, kopi sore hari, dan percakapan yang dalem no basa basi. ILOVE RUSIA, AAAAAAAAAAAAAAAAAAAAAAA я люблю Россию</p>
-            <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-              <button class="control-btn" id="edit-likes">Edit Kesukaan</button>
-              <button class="control-btn" id="reset-likes">Reset</button>
+            <div class="panel-content" data-name="identitas">
+              <div class="title">Identitas</div>
+              <div class="info-list">
+                <div class="info-item"><strong>Nama:</strong> <span id="ident-nama">Rachelle</span></div>
+                <div class="info-item"><strong>Usia:</strong> <span id="ident-usia">16</span></div>
+                <div class="info-item"><strong>Kota:</strong> <span id="ident-kota">Moscow</span></div>
+                <div class="info-item"><strong>Pekerjaan:</strong> <span id="ident-job">Pelajar</span></div>
+              </div>
             </div>
-          </div>
 
-          <div class="panel-content" data-name="kontak" style="display:none">
-            <div class="title">Kontak</div>
-            <div class="info-list">
-              <div class="info-item"><strong>Email</strong><br><span id="contact-email">ranselgasukanasgor@gmail.com</span></div>
-              <div class="info-item"><strong>Telepon</strong><br><span id="contact-phone">0889-8385-8921</span></div>
-              <div class="info-item" style="grid-column:span 2;"><strong>Alamat</strong><br><span id="contact-addr">isekai</span></div>
+            <div class="panel-content" data-name="kesukaan">
+              <div class="title">Kesukaan</div>
+              <p id="likes">Musik synthwave, desain antarmuka, kopi sore hari, dan percakapan bermakna.</p>
+              <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+                <button class="control-btn" id="edit-likes">Edit Kesukaan</button>
+                <button class="control-btn" id="reset-likes">Reset</button>
+              </div>
             </div>
-          </div>
 
-          <div class="panel-content" data-name="skill" style="display:none">
-            <div class="title">Skill</div>
-            <p>Berikut skill utama:</p>
-            <div class="info-list" style="margin-top:10px">
-              <div class="info-item">Multilingual (english, russia, german, japan)</div>
-              <div class="info-item">Artifficial inteligence</div>
-              <div class="info-item">Sense of humor & honestly blak-blakan</div>
-              <div class="info-item">Adaptif secara digital</div>
+            <div class="panel-content" data-name="kontak">
+              <div class="title">Kontak</div>
+              <div class="info-list">
+                <div class="info-item"><strong>Email</strong><br><span id="contact-email">ranselgasukanasgor@gmail.com</span></div>
+                <div class="info-item"><strong>Telepon</strong><br><span id="contact-phone">0889-8385-8921</span></div>
+                <div class="info-item" style="grid-column:span 2;"><strong>Alamat</strong><br><span id="contact-addr">isekai</span></div>
+              </div>
+
+              <div style="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                <!-- WhatsApp link (nomor yang kamu berikan) -->
+                <a class="wa-btn" id="wa-link" href="https://wa.me/6288983858921?text=Hai%20Rasel%2C%20aku%20dari%20web%20profilmu!" target="_blank" rel="noopener noreferrer">💬 Lebih akrab dengan Rasel</a>
+
+                <button class="control-btn" id="copy-phone">Salin nomor</button>
+              </div>
             </div>
-          </div>
 
+            <div class="panel-content" data-name="skill">
+              <div class="title">Skill</div>
+              <p>Berikut skill utama:</p>
+              <div class="info-list" style="margin-top:10px">
+                <div class="info-item">Multilingual (English, Russian, German, Japanese)</div>
+                <div class="info-item">Artificial Intelligence & data curiosity</div>
+                <div class="info-item">Design sense & prototyping</div>
+                <div class="info-item">Adaptif & komunikatif</div>
+              </div>
+            </div>
+
+          </div>
         </div>
+
       </div>
+
     </section>
   </div>
 
   <script>
-    // Interactive behaviour — mudah disesuaikan
     (function(){
       const buttons = document.querySelectorAll('.control-btn');
       const panels = document.querySelectorAll('.panel-content');
-      const panelRoot = document.getElementById('panel-root');
+      const avatarImg = document.getElementById('avatar-img');
 
       function showPanel(name){
-        panels.forEach(p=>{p.style.display = (p.dataset.name===name)?'block':'none'});
+        panels.forEach(p=>{
+          if(p.dataset.name===name){
+            p.classList.add('show');
+          } else {
+            p.classList.remove('show');
+          }
+        })
       }
 
       buttons.forEach(btn=>{
         btn.addEventListener('click', ()=>{
-          buttons.forEach(b=>b.classList.remove('active'));
-          btn.classList.add('active');
-          const target = btn.dataset.panel;
-          showPanel(target);
+          // deactivate sibling buttons (only for top tabs and small control buttons keep style)
+          const panelTarget = btn.dataset.panel;
+          if(panelTarget){
+            document.querySelectorAll('.controls .control-btn').forEach(b=>b.classList.remove('active'));
+            btn.classList.add('active');
+            showPanel(panelTarget);
+          }
         })
       })
 
       // small editing utilities
-      document.getElementById('edit-likes').addEventListener('click', ()=>{
-        const current = document.getElementById('likes').textContent;
-        const newVal = prompt('Edit daftar kesukaan (pisah dengan koma):', current);
-        if(newVal!==null) document.getElementById('likes').textContent = newVal;
-      });
+      const editLikes = document.getElementById('edit-likes');
+      const resetLikes = document.getElementById('reset-likes');
+      if(editLikes){
+        editLikes.addEventListener('click', ()=>{
+          const current = document.getElementById('likes').textContent;
+          const newVal = prompt('Edit daftar kesukaan (pisah dengan koma):', current);
+          if(newVal!==null) document.getElementById('likes').textContent = newVal;
+        })
+      }
+      if(resetLikes){
+        resetLikes.addEventListener('click', ()=>{
+          document.getElementById('likes').textContent = 'Musik synthwave, desain antarmuka, kopi sore hari, dan percakapan yang dalem.';
+        })
+      }
 
-      document.getElementById('reset-likes').addEventListener('click', ()=>{
-        document.getElementById('likes').textContent = 'Musik synthwave, desain antarmuka, kopi sore hari, dan percakapan yang dalem.';
-      });
-
-      // Allow easy replacement of avatar by drag & drop
-      const avatarImg = document.getElementById('avatar-img');
+      // Drag & drop avatar replace
       const avatar = document.getElementById('avatar');
-
       avatar.addEventListener('dragover', e=>{e.preventDefault(); avatar.style.transform='scale(1.01)'});
       avatar.addEventListener('dragleave', e=>{avatar.style.transform='none'});
       avatar.addEventListener('drop', e=>{
@@ -236,16 +298,26 @@
         } else alert('Seret file gambar yang valid ke area foto.');
       });
 
-      // Keyboard shortcuts (1..5) untuk panel
+      // copy phone
+      const copyBtn = document.getElementById('copy-phone');
+      copyBtn && copyBtn.addEventListener('click', ()=>{
+        const phone = document.getElementById('contact-phone').textContent.trim();
+        navigator.clipboard && navigator.clipboard.writeText(phone).then(()=>{
+          copyBtn.textContent = 'Tersalin!';
+          setTimeout(()=>{copyBtn.textContent = 'Salin nomor'},1500);
+        }).catch(()=>{ alert('Tidak dapat menyalin otomatis — salin manual: ' + phone) });
+      })
+
+      // keyboard shortcuts 1..5
       window.addEventListener('keydown', e=>{
         if(e.key>='1' && e.key<='5'){
           const idx = parseInt(e.key,10)-1;
-          const btn = buttons[idx];
+          const btn = document.querySelectorAll('.controls .control-btn')[idx];
           if(btn) btn.click();
         }
       })
 
-      // Small dynamic headline replacement example
+      // double click name to change
       const nameEl = document.getElementById('fullName');
       const headline = document.getElementById('headline');
       nameEl.addEventListener('dblclick', ()=>{
@@ -255,6 +327,10 @@
 
       // initial state
       showPanel('about');
+
+      // accessible: ensure first tab has focus
+      const firstTab = document.querySelector('.controls .control-btn');
+      firstTab && firstTab.setAttribute('aria-selected','true');
 
     })();
   </script>
