@@ -1,380 +1,330 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>soulmate nya nagi👅✌️</title>
-  <meta name="description" content="Kartu profil personal Rasel. Klik tombol untuk lihat Identitas, Kesukaan, Kontak, Skill." />
 
-  <!-- Pilih font yang halus -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- font cotton candy -->
+  <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg-1: #f6f4ff; /* very light lilac */
-      --bg-2: #fff;     /* white */
-      --card-bg: rgba(255,255,255,0.7);
-      --glass: rgba(255,255,255,0.55);
-      --accent: #b99bff; /* pastel purple */
-      --accent-2: #ffd9f7; /* pastel pink */
-      --muted: #6b6b7a;
-      --soft-shadow: 0 8px 30px rgba(90,70,120,0.08);
-      --card-radius: 18px;
-      --glass-border: rgba(120,100,160,0.12);
-      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-      color-scheme: light;
+    :root {
+      --pink: #ffd5ec;
+      --blue: #c8e7ff;
+      --card-bg: rgba(255,255,255,0.8);
+      --accent: #ffb6e6;
+      --accent2: #b4e1ff;
+      --text: #3a275a;
+      font-family: 'Quicksand', sans-serif;
     }
 
-    /* --- Reset / base --- */
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%); color:#1f1430}
-    img{max-width:100%;height:auto;display:block}
-    a{color:inherit}
-
-    /* animated moving background: soft flowing gradient */
-    .bg-animated{
-      position:fixed;inset:0;z-index:-2;pointer-events:none;
-      background: radial-gradient(circle at 10% 20%, rgba(185,155,255,0.25), transparent 10%),
-                  radial-gradient(circle at 80% 80%, rgba(255,217,247,0.22), transparent 10%);
-      filter:blur(30px) saturate(120%);
-      animation: floatBG 18s linear infinite;
-      opacity:0.95;
-    }
-    @keyframes floatBG{0%{transform:translateY(0) translateX(0)}50%{transform:translateY(-20px) translateX(15px)}100%{transform:translateY(0) translateX(0)}}
-
-    /* subtle moving stripes on top */
-    .bg-lines{position:fixed;inset:0;z-index:-1;opacity:0.06;pointer-events:none;background-image:linear-gradient(90deg, rgba(200,180,255,0.08) 0.5px, transparent 0.5px);background-size:40px 40px;animation: pan 12s linear infinite}
-    @keyframes pan{from{background-position:0 0}to{background-position:40px 0}}
-
-    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px}
-
-    /* card */
-    .profile-card{
-      width:min(980px,96%);
-      background:var(--card-bg);
-      border-radius:calc(var(--card-radius) + 6px);
-      box-shadow:var(--soft-shadow);
-      display:grid;grid-template-columns:320px 1fr;gap:22px;padding:22px;align-items:start;backdrop-filter: blur(6px) saturate(110%);
-      border:1px solid var(--glass-border);
-      overflow:hidden;
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, var(--pink), var(--blue));
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* left column */
-    .left{display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center;padding:6px}
-    .avatar{
-      width:260px;height:260px;border-radius:16px;overflow:hidden;border:6px solid rgba(255,255,255,0.6);background:linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.45));box-shadow:0 12px 40px rgba(95,70,130,0.08);position:relative;
-    }
-    .avatar img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.9,.3,1)}
-    .avatar:hover img{transform:scale(1.03) rotate(-0.4deg)}
-
-    .glow-ring{position:absolute;right:-18px;bottom:-18px;width:90px;height:90px;border-radius:50%;filter:blur(18px);background:radial-gradient(circle at 20% 20%, var(--accent), transparent 40%), radial-gradient(circle at 70% 70%, var(--accent-2), transparent 40%);opacity:0.9}
-
-    .name{font-size:1.4rem;font-weight:700;color:#2b1938}
-    .role{font-size:0.95rem;color:var(--muted);margin-top:2px}
-
-    .quick-stats{display:flex;flex-direction:row;gap:8px;flex-wrap:wrap;justify-content:center}
-    .stat{background:rgba(255,255,255,0.9);padding:8px 12px;border-radius:12px;font-size:0.88rem;color:#3b2b4b;border:1px solid rgba(120,100,160,0.06)}
-
-    .hint{font-size:0.86rem;color:var(--muted);max-width:260px}
-
-    /* right column */
-    .right{padding-right:6px}
-    .controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-    .control-btn{
-      --pad:8px 12px;cursor:pointer;border-radius:12px;padding:var(--pad);background:transparent;border:1px solid rgba(90,70,120,0.08);font-weight:600;letter-spacing:0.2px;transition:all .18s;display:inline-flex;gap:10px;align-items:center;color:#2b1938;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.95));
-    }
-    .control-btn:hover{transform:translateY(-4px);box-shadow:0 8px 22px rgba(90,70,120,0.06)}
-    .control-btn.active{background:linear-gradient(90deg,var(--accent)33%,var(--accent-2)100%);color:#3b2145;border:1px solid rgba(90,70,120,0.08)}
-
-    .panel{min-height:220px;background:transparent;padding:18px;border-radius:12px;position:relative;overflow:hidden}
-    .panel-card{background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.95));padding:16px;border-radius:12px;border:1px solid rgba(120,100,160,0.06);box-shadow:0 6px 20px rgba(90,70,120,0.04)}
-
-    .panel .title{font-weight:700;margin-bottom:8px;color:#2b1938}
-    .panel p{color:var(--muted);line-height:1.5}
-
-    /* particles (small floating circles) */
-    .particle{position:absolute;border-radius:50%;opacity:0.18;filter:blur(6px);pointer-events:none}
-    .p1{width:160px;height:160px;right:-40px;top:-40px;background:radial-gradient(circle at 30% 30%,var(--accent),transparent 40%)}
-    .p2{width:120px;height:120px;left:-30px;bottom:-30px;background:radial-gradient(circle at 70% 60%,var(--accent-2),transparent 40%);opacity:0.12}
-
-    /* info list */
-    .info-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
-    .info-item{background:transparent;padding:10px;border-radius:10px;border:1px dashed rgba(120,100,160,0.06);font-size:0.95rem;color:var(--muted)}
-
-    .footer-note{margin-top:12px;font-size:0.86rem;color:rgba(43,25,56,0.7)}
-
-    /* small eyebrow */
-    .badge{display:inline-flex;padding:6px 10px;border-radius:999px;font-weight:600;background:linear-gradient(90deg, rgba(185,155,255,0.12), rgba(255,217,247,0.12));border:1px solid rgba(120,100,160,0.06);color:#3b2145}
-
-    /* animations for panel content */
-    .panel-content{opacity:0;transform:translateY(8px);transition:all .36s cubic-bezier(.2,.9,.3,1);display:none}
-    .panel-content.show{display:block;opacity:1;transform:translateY(0)}
-
-    /* WhatsApp button style */
-    .wa-btn{display:inline-flex;gap:8px;align-items:center;padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;font-weight:700;text-decoration:none;border:0}
-
-    /* responsive adjustments */
-    @media (max-width:900px){
-      .profile-card{grid-template-columns:1fr;align-items:center;padding:18px}
-      .avatar{width:200px;height:200px}
-      .info-list{grid-template-columns:repeat(1,1fr)}
-      .right{width:100%}
+    .profile-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(150,120,180,0.12);
+      width: min(950px, 95%);
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 20px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
     }
 
-    @media (max-width:520px){
-      .wrap{padding:14px}
-      .avatar{width:150px;height:150px}
-      .controls{flex-direction:column}
-      .control-btn{width:100%;justify-content:center}
-      .name{font-size:1.05rem}
-      .panel-card{padding:12px}
+    .left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
     }
 
-    /* focus styles for accessibility */
-    .control-btn:focus{outline:3px solid rgba(185,155,255,0.22);outline-offset:4px}
-    .wa-btn:focus{outline:3px solid rgba(255,217,247,0.22);outline-offset:3px}
+    .avatar {
+      width: 230px;
+      height: 230px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 4px solid white;
+      box-shadow: 0 6px 18px rgba(255, 200, 250, 0.4);
+    }
 
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .name {
+      font-family: 'Bubblegum Sans', cursive;
+      font-size: 1.7rem;
+      color: var(--text);
+      text-shadow: 0 2px 6px rgba(255,200,250,0.3);
+    }
+
+    .role {
+      font-size: 0.9rem;
+      color: #6a578f;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .control-btn {
+      background: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 14px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      color: var(--text);
+    }
+
+    .control-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(200,150,255,0.2);
+    }
+
+    .control-btn.active {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: white;
+      box-shadow: 0 6px 16px rgba(200,150,255,0.25);
+    }
+
+    .panel {
+      background: white;
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: 0 6px 20px rgba(220,180,255,0.1);
+      min-height: 200px;
+    }
+
+    .panel-content {
+      display: none;
+    }
+
+    .panel-content.active {
+      display: block;
+    }
+
+    .title {
+      font-family: 'Bubblegum Sans', cursive;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .info-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+    }
+
+    .info-item {
+      background: rgba(255,255,255,0.7);
+      border-radius: 10px;
+      padding: 10px;
+      border: 1px dashed rgba(200,160,240,0.2);
+      font-size: 0.9rem;
+    }
+
+    /* Bagian kesukaan (gambar + teks) */
+    .favorite-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 18px;
+      justify-items: center;
+      margin-top: 18px;
+    }
+
+    .favorite-item {
+      background: rgba(255,255,255,0.6);
+      border-radius: 14px;
+      padding: 10px;
+      text-align: center;
+      transition: all 0.25s ease;
+      border: 1px dashed rgba(200,160,240,0.15);
+    }
+
+    .favorite-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(255,200,250,0.3);
+    }
+
+    .favorite-item img {
+      width: 70px;
+      height: 70px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin-bottom: 6px;
+    }
+
+    .favorite-item p {
+      font-size: 0.9rem;
+      margin: 0;
+      color: #5b4a6f;
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .profile-card {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
+
 <body>
+  <div class="profile-card">
+    <div class="left">
+      <div class="avatar">
+        <img src="rhm.jpeg" alt="Foto Rasel">
+      </div>
+      <div class="name">@rcheleyn - on ig</div>
+      <div class="role">nonspoken rizz • multilingual • music lover • ethereal</div>
+    </div>
 
-  <div class="bg-animated" aria-hidden></div>
-  <div class="bg-lines" aria-hidden></div>
-
-  <div class="wrap">
-    <section class="profile-card" aria-label="Kartu profil Rasel" role="region">
-
-      <div class="left">
-        <div class="avatar" id="avatar" title="Klik dua kali untuk ganti nama atau seret foto untuk ganti foto">
-          <!-- Ganti src dengan foto-mu (rahma.jpeg ada di folder) -->
-          <img id="avatar-img" src="rahma.jpg" alt="Foto Rasel" />
-          <div class="glow-ring" aria-hidden></div>
-        </div>
-
-        <div>
-          <div class="name" id="fullName">@rcheleyn - on ig</div>
-          <div class="role" id="tagline">nonspoken rizz • multilingual • music lover • ethereal</div>
-        </div>
-
-        <div class="quick-stats" aria-hidden>
-          <div class="stat">🇷🇺 russian enthusiast</div>
-          <div class="stat">☕ kopi sore</div>
-          <div class="stat">🎧 synthwave enjoyer</div>
-        </div>
-
-        <div class="hint">Добро пожаловать! klik tombol di kanan untuk lihat detail. Tekan 1–5 di keyboard untuk ganti panel(kalo make laptop ya sayangku cintaku, kl make hp ya tinggal pencet. punya jari kok, yakali mau pake kboard lewat hp ya ga cocok lah kanjut)</div>
+    <div class="right">
+      <div class="controls">
+        <button class="control-btn active" data-panel="about">Tentang</button>
+        <button class="control-btn" data-panel="identitas">Identitas</button>
+        <button class="control-btn" data-panel="kesukaan">Kesukaan</button>
+        <button class="control-btn" data-panel="kontak">Kontak</button>
+        <button class="control-btn" data-panel="skill">Skill</button>
       </div>
 
-      <div class="right">
-        <div class="controls" role="tablist" aria-label="Kontrol profil">
-          <button class="control-btn active" data-panel="about" aria-selected="true">Tentang</button>
-          <button class="control-btn" data-panel="identitas">Identitas</button>
-          <button class="control-btn" data-panel="kesukaan">Kesukaan</button>
-          <button class="control-btn" data-panel="kontak">Kontak</button>
-          <button class="control-btn" data-panel="skill">Skill</button>
+      <div class="panel">
+        <!-- Panel TENTANG -->
+        <div class="panel-content active" id="about">
+          <div class="title">Halo! Aku Rasel</div>
+          <p>Добро пожаловать! Aku senang merangkai hal-hal indah: dari desain antarmuka yang tenang sampai playlist malam hari. btw tw ga kalo aku sebenernya dewa ibelis. mwehwhehwh</p>
         </div>
 
-        <div class="panel" id="panel-root">
-          <div class="particle p1" aria-hidden></div>
-          <div class="particle p2" aria-hidden></div>
-
-          <div class="panel-card">
-
-            <div class="panel-content" data-name="about">
-              <div class="title">Halo! Aku <span id="headline">Rasel</span></div>
-              <p id="about-text">Aku senang merangkai hal-hal indah: dari desain antarmuka yang tenang sampai playlist malam hari. btw tw ga kalo aku sebenernya dewa ibelis. mwehwhehwh</p>
-              <div class="footer-note">Tip: tekan tombol <strong>Kontak</strong> untuk menghubungiku lewat WhatsApp.</div>
+        <!-- Panel IDENTITAS -->
+        <div class="panel-content" id="identitas">
+          <div class="title">Identitas</div>
+          <div class="info-list">
+            <div class="info-item"><strong>Nama:</strong> Rachelle</div>
+            <div class="info-item"><strong>Usia:</strong> x² - 32x + 256 = 0 tahun</div>
+            <div class="info-item"><strong>Kota:</strong> Moscow aseli cik</div>
+            <div class="info-item"><strong>Kelas:</strong> XI TKJ 1</div>
+            <div class="info-item"><strong>Ultah:</strong> 9 Agustus</div>
+            <div class="info-item"><strong>Tinggi:</strong> 4'11</div>
+          </div>
+        </div>
+        <!-- Panel KESUKAAN -->
+        <div class="panel-content" id="kesukaan">
+          <div class="title">Kesukaan</div>
+          <div class="favorite-list">
+            <div class="favorite-item">
+              <img src="music.gif" alt="Synthwave">
+              <p>Musik Synthwave</p>
             </div>
-
-            <div class="panel-content" data-name="identitas">
-              <div class="title">Identitas</div>
-              <div class="info-list">
-                <div class="info-item"><strong>Nama:</strong> <span id="ident-nama">Rachelle</span></div>
-                <div class="info-item"><strong>Usia:</strong> <span id="ident-usia"><u>x<sup>2</sup> - 32x + 256 = 0</u> tahun fr</span></div>
-                <div class="info-item"><strong>Kota:</strong> <span id="ident-kota">Moscow aseli cik</span></div>
-                <div class="info-item"><strong>Kelas:</strong> <span id="ident-job">XI TKJ 1</span></div>
-                <div class="info-item"><strong>ultah:</strong> <span id="ident-job">9 agustus</span></div>
-                <div class="info-item"><strong>tinggi badan:</strong> <span id="ident-job">4'11</span></div>
-              </div>
+            <div class="favorite-item">
+              <img src="coffee.gif" alt="Kopi Sore">
+              <p>Kopi</p>
             </div>
-
-            <div class="panel-content" data-name="kesukaan">
-              <div class="title">Kesukaan</div>
-              <p id="likes">Musik synthwave, solving math problem, something cute, coffee, matcha (the sugar ig, bc i love sweet thing)... ok, enough..</p>
-              <p id="likes">Aku tuh suka banget sama hal-hal yang nuansanya Rusia, entah kenapa vibes-nya tuh tenang tapi dalem—makanya aku belajar bahasanya meski baru A1.1.</p>
-              <p id="likes">Aku juga suka banget sama hal-hal yang aestetik digital kayak layout web, sampe profile aesthetic yang rapi tapi tetep punya sentuhan chaos yang gwe banged loh rek</p>
-              <p id="likes">Anime juga jadi salah satu tempat pelarian, apalagi yang karakternya kompleks dan vibe nya dark kayak Makima atau Seishiro Nagi</p>
-              <p id="likes">terus aku tuh enjoy bahas MBTI, fungsi kognitif—hal-hal yang bikin aku ngerasa nyambung sama karakter fiksi</p>
-               <p id="likes">Satu lagi yang gak bisa lepas: aku cinta banget sama teknologi, AI, data analysis, coding… semacam bikin aku ngerasa punya kontrol di tengah dunia yang absurd.</p>
-               <p id="likes">Dan kadang, aku nulis hal-hal emosional atau puisi—bukan karena mellow, tapi karena itu caraku buat ekspresiin sisi yang gak bisa dijelasin ke orang</p>
-               <p id="likes">pribadi yang privasi bgt, tapi juga punya sisi sarkastik spontan. lebih suka dimengerti lewat cara aku ngerangkai kata, bukan dari cara aku senyum ke orang.</p>
-              <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-              </div>
+            <div class="favorite-item">
+              <img src="math.gif" alt="Matematika">
+              <p>Solving Math Problem</p>
             </div>
-
-            <div class="panel-content" data-name="kontak">
-              <div class="title">Kontak</div>
-              <div class="info-list">
-                <div class="info-item">
-                  <strong>Email</strong><br>
-                  <span id="contact-email">ranselgasukanasgor@gmail.com</span>
-                </div>
-                <div class="info-item">
-                  <strong>Telepon</strong><br>
-                  <span id="contact-phone">0889-8385-8921</span>
-                </div>
-                <div class="info-item" style="grid-column:span 2;">
-                  <strong>Alamat</strong><br>
-                  <span id="contact-addr">443R+VCQ Kademangaran, Kabupaten Tegal, Jawa Tengah</span>
-                </div>
-              </div>
-            
-              <!-- Tambahkan bagian map di bawah sini -->
-              <div class="map-container" style="margin-top: 15px;">
-                <iframe
-                  src="https://www.google.com/maps?q=443R%2BVCQ%20Kademangaran%2C%20Kabupaten%20Tegal%2C%20Jawa%20Tengah&output=embed"
-                  width="100%"
-                  height="300"
-                  style="border:0; border-radius: 10px;"
-                  allowfullscreen=""
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-              </div>
+            <div class="favorite-item">
+              <img src="russia.gif" alt="Rusia">
+              <p>Rusia</p>
             </div>
-
-
-            <div style="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-                <!-- WhatsApp link (nomor yang kamu berikan) -->
-                <a class="wa-btn" id="wa-link" href="https://wa.me/6288983858921?text=Hai%20Rasel%2C%20aku%20dari%20web%20profilmu!" target="_blank" rel="noopener noreferrer">💬 Lebih akrab dengan Rasel</a>
-
-                <button class="control-btn" id="copy-phone">Salin nomor</button>
-              </div>
+            <div class="favorite-item">
+              <img src="johan.gif" alt="Anime Dark">
+              <p>Phsycology Anime</p>
             </div>
-
-            <div class="panel-content" data-name="skill">
-              <div class="title">Skill</div>
-              <p>Berikut skill utama:</p>
-              <div class="info-list" style="margin-top:10px">
-                <div class="info-item">Multilingual (B1 English, A1.1 Russian, A1 German, N1 Japanese)</div>
-                <div class="info-item">Artificial Intelligence & data curiosity</div>
-                <div class="info-item">Design or prototyping</div>
-                <div class="info-item">Adaptif secara digital & komunikatif</div>
-              </div>
+            <div class="favorite-item">
+              <img src="mbti.gif" alt="MBTI">
+              <p>cognitive function and MBTI</p>
             </div>
 
           </div>
         </div>
 
-      </div>
+        <!-- Panel KONTAK -->
+        <div class="panel-content" id="kontak">
+          <div class="title">Kontak</div>
+          <div class="info-list">
+            <div class="info-item"><strong>Email:</strong> ranselgasukanasgor@gmail.com</div>
+            <div class="info-item"><strong>Telepon:</strong> 0889-8385-8921</div>
+            <div class="info-item" style="grid-column:span 2;"><strong>Alamat:</strong> 443R+VCQ Kademangaran, Kabupaten Tegal, Jawa Tengah</div>
+          </div>
 
-    </section>
+          <div class="map-container" style="margin-top: 15px;">
+            <iframe
+              src="https://www.google.com/maps?q=443R%2BVCQ%20Kademangaran%2C%20Kabupaten%20Tegal%2C%20Jawa%20Tengah&output=embed"
+              width="100%" height="300"
+              style="border:0; border-radius:10px;"
+              allowfullscreen=""
+              loading="lazy">
+            </iframe>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <a class="wa-btn" href="https://wa.me/6288983858921?text=Hai%20Rasel%2C%20aku%20dari%20web%20profilmu!"
+              target="_blank" rel="noopener noreferrer">💬 Chat Rasel</a>
+            <button class="control-btn" id="copy-phone">Salin Nomor</button>
+          </div>
+        </div>
+
+        <!-- Panel SKILL -->
+        <div class="panel-content" id="skill">
+          <div class="title">Skill</div>
+          <div class="info-list" style="margin-top:10px;">
+            <div class="info-item">Multilingual (B1 English, A1.1 Russian, A1 German, N1 Japanese)</div>
+            <div class="info-item">Artificial Intelligence & Data Curiosity</div>
+            <div class="info-item">Design & Prototyping</div>
+            <div class="info-item">Adaptif Digital & Komunikatif</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script>
-    (function(){
-      const buttons = document.querySelectorAll('.control-btn');
-      const panels = document.querySelectorAll('.panel-content');
-      const avatarImg = document.getElementById('avatar-img');
+    // JavaScript untuk navigasi antar panel
+    const buttons = document.querySelectorAll('.control-btn[data-panel]');
+    const panels = document.querySelectorAll('.panel-content');
 
-      function showPanel(name){
-        panels.forEach(p=>{
-          if(p.dataset.name===name){
-            p.classList.add('show');
-          } else {
-            p.classList.remove('show');
-          }
-        })
-      }
+    function showPanel(id) {
+      panels.forEach(p => p.classList.remove('active'));
+      const target = document.getElementById(id);
+      if (target) target.classList.add('active');
+      buttons.forEach(b => b.classList.remove('active'));
+      document.querySelector(`.control-btn[data-panel="${id}"]`)?.classList.add('active');
+    }
 
-      buttons.forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-          // deactivate sibling buttons (only for top tabs and small control buttons keep style)
-          const panelTarget = btn.dataset.panel;
-          if(panelTarget){
-            document.querySelectorAll('.controls .control-btn').forEach(b=>b.classList.remove('active'));
-            btn.classList.add('active');
-            showPanel(panelTarget);
-          }
-        })
-      })
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => showPanel(btn.dataset.panel));
+    });
 
-      // small editing utilities
-      const editLikes = document.getElementById('edit-likes');
-      const resetLikes = document.getElementById('reset-likes');
-      if(editLikes){
-        editLikes.addEventListener('click', ()=>{
-          const current = document.getElementById('likes').textContent;
-          const newVal = prompt('Edit daftar kesukaan (pisah dengan koma):', current);
-          if(newVal!==null) document.getElementById('likes').textContent = newVal;
-        })
-      }
-      if(resetLikes){
-        resetLikes.addEventListener('click', ()=>{
-          document.getElementById('likes').textContent = 'Musik synthwave, desain antarmuka, kopi sore hari, dan percakapan yang dalem.';
-        })
-      }
-
-      // Drag & drop avatar replace
-      const avatar = document.getElementById('avatar');
-      avatar.addEventListener('dragover', e=>{e.preventDefault(); avatar.style.transform='scale(1.01)'});
-      avatar.addEventListener('dragleave', e=>{avatar.style.transform='none'});
-      avatar.addEventListener('drop', e=>{
-        e.preventDefault(); avatar.style.transform='none';
-        const file = e.dataTransfer.files && e.dataTransfer.files[0];
-        if(file && file.type.startsWith('image/')){
-          const reader = new FileReader();
-          reader.onload = function(ev){ avatarImg.src = ev.target.result };
-          reader.readAsDataURL(file);
-        } else alert('Seret file gambar yang valid ke area foto.');
+    // Salin nomor telepon
+    document.getElementById('copy-phone')?.addEventListener('click', () => {
+      const text = "088983858921";
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Nomor disalin: " + text);
       });
+    });
 
-      // copy phone
-      const copyBtn = document.getElementById('copy-phone');
-      copyBtn && copyBtn.addEventListener('click', ()=>{
-        const phone = document.getElementById('contact-phone').textContent.trim();
-        navigator.clipboard && navigator.clipboard.writeText(phone).then(()=>{
-          copyBtn.textContent = 'Tersalin!';
-          setTimeout(()=>{copyBtn.textContent = 'Salin nomor'},1500);
-        }).catch(()=>{ alert('Tidak dapat menyalin otomatis — salin manual: ' + phone) });
-      })
-
-      // keyboard shortcuts 1..5
-      window.addEventListener('keydown', e=>{
-        if(e.key>='1' && e.key<='5'){
-          const idx = parseInt(e.key,10)-1;
-          const btn = document.querySelectorAll('.controls .control-btn')[idx];
-          if(btn) btn.click();
-        }
-      })
-
-      // double click name to change
-      const nameEl = document.getElementById('fullName');
-      const headline = document.getElementById('headline');
-      nameEl.addEventListener('dblclick', ()=>{
-        const n = prompt('Ganti nama:', nameEl.textContent);
-        if(n!==null){ nameEl.textContent = n; headline.textContent = n; document.getElementById('ident-nama').textContent = n }
-      });
-
-      // initial state
-      showPanel('about');
-
-      // accessible: ensure first tab has focus
-      const firstTab = document.querySelector('.controls .control-btn');
-      firstTab && firstTab.setAttribute('aria-selected','true');
-
-    })();
+    // Tampilkan panel pertama saat load
+    showPanel('about');
   </script>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
